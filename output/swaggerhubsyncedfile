@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: CAP API
+  description: Testing creation using Swagger Hub
+  contact:
+    name: Douglas C
+    email: blahblah@blah.com
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/masterdouglas/CAP-API/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /:
+    get:
+      description: Returns a list of stuff
+      responses:
+        "200":
+          description: Successful ping response
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: success
+  /v1/tfemanagement/orgs/aws/teams:
+    get:
+      description: Retrieve TFE Teams
+      responses:
+        "200":
+          description: Successful ping response
+          content:
+            application/json:
+              schema:
+                type: array
+                example:
+                - team_id: abc12345
+                  team_name: AWSome-Team
+                - team_id: def54321
+                  team_name: NEW-Team
+                items:
+                  $ref: '#/components/schemas/team'
+components:
+  schemas:
+    team:
+      type: object
+      properties:
+        team_id:
+          type: string
+        team_name:
+          type: string
+      description: Definition for TFE Team
